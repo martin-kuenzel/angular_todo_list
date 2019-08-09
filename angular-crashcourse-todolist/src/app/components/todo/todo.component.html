@@ -1,4 +1,4 @@
-<div class="container ml-1">
-<app-todo-item *ngFor="let todo of todoItems" [todo]="todo">
+<div class="ml-1 mr-1">
+<app-todo-item *ngFor="let todoItem of todoItems" [todo]="todoItem" (deleteTodoItem)="deleteTodoItem($event)">
 </app-todo-item>
 </div>

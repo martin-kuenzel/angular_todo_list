@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
+
 import { Todo } from '../../models/Todo';
 
 @Component({
@@ -9,29 +11,22 @@ import { Todo } from '../../models/Todo';
 export class TodoComponent implements OnInit {
   todoItems: Todo[];
 
-  constructor() { }
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {
-    this.todoItems = [
-      {
-        id: 0,
-        title: 'todo 1',
-        content: 'this is the content',
-        isDone: false
-      },
-      {
-        id: 1,
-        title: 'todo 2',
-        content: 'this is the content',
-        isDone: false
-      },
-      {
-        id: 2,
-        title: 'todo 3',
-        content: 'this is the content',
-        isDone: false
-      },
-    ];
+    this.todoService.getTodoItems().subscribe( ret => {
+      this.todoItems = ret;
+    });
   }
 
+  deleteTodoItem(todo: Todo) {
+    // this is just for emulation because we can not really delete data on the currently used server
+    this.todoItems = this.todoItems.filter( x => x.id !== todo.id );
+    return 'Success';
+
+    // this would be the real deletion action
+    this.todoService.deleteTodoItem(todo).subscribe( ret => {
+        console.log(ret);
+    });
+  }
 }

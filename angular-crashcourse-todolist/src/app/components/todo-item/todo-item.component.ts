@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../../models/Todo';
+import {TodoService} from '../../services/todo.service';
+
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,8 +11,9 @@ import { Todo } from '../../models/Todo';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo: Todo;
+  @Output() deleteTodoItem: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
   }
@@ -25,13 +29,21 @@ export class TodoItemComponent implements OnInit {
   }
 
   // Switching the checkbox on an item
-  onInput(todo) {
-    todo = todo.isDone ? false : true;
+  onSwitchState(todo) {
+    // input in UI
+    todo.isDone = todo.isDone ? false : true;
+    // input on Server
+    this.todoService.switchState(todo).subscribe( ret => {
+      console.log(ret);
+    });
   }
 
   // Deleting an item
   onDelete(todo) {
+    // delete in UI
     console.log(todo)
+    // delete on Server
+    this.deleteTodoItem.emit(todo);
   }
 
 }
