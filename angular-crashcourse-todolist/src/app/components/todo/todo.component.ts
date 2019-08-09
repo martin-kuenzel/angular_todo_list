@@ -27,15 +27,20 @@ export class TodoComponent implements OnInit {
     // this is just for emulation because we can not really delete data on the currently used server
     return 'Success';
 
-    // this would be the real deletion action
+    // this would be the real deletion action 
     this.todoService.deleteTodoItem(todo).subscribe( ret => {
+        this.todoItems = this.todoItems.filter( x => x.id !== todo.id );
         console.log(ret);
     });
   }
 
   // this is the add action
   addTodoItem(todo: Todo) {
-    console.log(todo);
+    this.todoItems.push( todo );
+
+    // this is just for emulation because we can not really add data on the currently used server
+    return 'Success';
+    
     this.todoService.addTodoItem(todo).subscribe( ret => {
     
       // this will change the Items in the UI

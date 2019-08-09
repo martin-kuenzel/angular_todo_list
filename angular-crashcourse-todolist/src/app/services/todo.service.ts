@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class TodoService {
   baseUrl = 'https://jsonplaceholder.typicode.com/todos';
-  amountParam = '?_limit=20';
+  amountParam = '?_limit=4';
 
   constructor(private http: HttpClient) { }
 

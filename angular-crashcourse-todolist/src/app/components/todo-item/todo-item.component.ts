@@ -40,8 +40,6 @@ export class TodoItemComponent implements OnInit {
 
   // Deleting an item
   onDelete(todo) {
-    // delete in UI
-    console.log(todo)
     // delete on Server
     this.deleteTodoItem.emit(todo);
   }

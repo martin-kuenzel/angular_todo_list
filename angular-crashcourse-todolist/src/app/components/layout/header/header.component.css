@@ -1,4 +1,8 @@
 /* because the mainheader is fixed, we need a solid placeholder to keep the height */
 .mainheader-placeholder {
-    height: 71.992px !important;
+    height: calc( 8px + 55.465px + 8px + 0.996px + 8px + 23.727px + 8px + 0.996px ) !important;
+}
+
+#navigation {
+    top: calc( 8px + 55.465px + 8px + 0.996px ) !important;
 }
