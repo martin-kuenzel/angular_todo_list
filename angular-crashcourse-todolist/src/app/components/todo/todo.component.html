@@ -1,3 +1,4 @@
+<app-add-todo-item (addTodoItem)="addTodoItem($event)"></app-add-todo-item>
 <div class="ml-1 mr-1">
 <app-todo-item *ngFor="let todoItem of todoItems" [todo]="todoItem" (deleteTodoItem)="deleteTodoItem($event)">
 </app-todo-item>

@@ -47,13 +47,18 @@ export class TodoService {
     ];*/
   }
 
+  // adding a new todo item on server
+  addTodoItem(todo: Todo): Observable<Todo>{
+    return this.http.post<Todo>( this.baseUrl, todo, httpOptions);
+  }
+
   // switching the state of todo item on server
   switchState(todo: Todo): Observable<any> {
     const url = `${this.baseUrl}/${todo.id}`;
     return this.http.put( url, todo, httpOptions);
   }
 
-  // deleting a todo item on server 
+  // deleting a todo item on server
   /*
     this will not be run,
     because we deactivate angular-crashcourse-todolist/src/app/components/todo/todo.component.ts::deleteTodoItem(todo: Todo)}

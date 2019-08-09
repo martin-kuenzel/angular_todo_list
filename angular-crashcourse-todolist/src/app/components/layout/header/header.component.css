@@ -1,0 +1,4 @@
+/* because the mainheader is fixed, we need a solid placeholder to keep the height */
+.mainheader-placeholder {
+    height: 71.992px !important;
+}
