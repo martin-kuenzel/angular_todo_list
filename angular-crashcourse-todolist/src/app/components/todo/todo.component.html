@@ -1,4 +1,4 @@
-<h1>Todo List</h1>
-<ul *ngFor="let todoItem of todoItems">
-    <li>{{todoItem.title}}</li>
-</ul>
+<div class="container ml-1">
+<app-todo-item *ngFor="let todo of todoItems" [todo]="todo">
+</app-todo-item>
+</div>

@@ -1,0 +1,7 @@
+<div [ngClass]="setClasses()" class="d-block m-4">
+    <div> 
+        <input id="{{todo.id}}" (change)="onInput(todo)" class="m-3" type="checkbox" />
+        <label for="{{todo.id}}" class="m-3">{{ todo.title }}</label>
+        <button class="m-3 p-4" (click)="onDelete(todo)" class="btn btn-danger btn-sm rounded-circle">X</button>
+    </div>
+</div>

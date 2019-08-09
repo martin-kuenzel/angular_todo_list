@@ -1,0 +1,5 @@
+.is-done{ 
+    text-decoration: line-through;
+    opacity: .75;
+    background: darkred;
+ }
